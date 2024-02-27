@@ -34,7 +34,7 @@ conda env create -f environment.yml
 ## Logistic Regression
 ### Scale Invariance 
 
-In Figure 1 of our paper, we compare the performance of KATE on scaled and un-scaled data and empirically show the scale-invariance property. Please run the code in _____ to reproduce the plots of Figure 1.
+In Figure 1 of our paper, we compare the performance of KATE on scaled and un-scaled data and empirically show the scale-invariance property. Please run the code in [logistic_regression/KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
 
 ## Notebooks
 To reproduce the results of the paper, run the train notebook, then run corresponding plot notebook.
