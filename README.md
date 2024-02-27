@@ -19,7 +19,7 @@ In this repository we compare the performance of KATE with well-known algorithms
    * [Requirements](#requirements)
    * [Logistic Regression](#logistic-regression)
       * [Scale Invariance](#scale-invariance)
-      * [Robustness of KATE](#robustness-KATE)
+      * [Robustness of KATE](#robustness-of-KATE)
       * [Performance of KATE on Real Data](#KATE-real-data)
    * [Training of Neural Network](#neural-network)
      * [Image Classification](#image-classification)
