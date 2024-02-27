@@ -32,6 +32,7 @@ conda env create -f environment.yml
 ```
 
 ## Logistic Regression
+
 ### Scale Invariance 
 
 In Figure 1 of our paper, we compare the performance of KATE on scaled and un-scaled data and empirically show the scale-invariance property. Please run the code in [logistic_regression/KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
