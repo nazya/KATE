@@ -35,13 +35,13 @@ conda env create -f environment.yml
 
 ### Scale Invariance 
 
-In Figure 1 of our paper, we compare the performance of KATE on scaled and un-scaled data and empirically show the scale-invariance property. Please run the code in [logistic_regression/KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
+In Figure 1 of our paper, we compare the performance of KATE on scaled and un-scaled data and empirically show the scale-invariance property. Please run the code in [KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
 
 ![Scale Invariance](image/scale_invariance.png)
 
 ## Robustness of KATE
 
-In Figure 2 of our paper, we compare the performance of KATE with AdGrad, AdaGradNorm, SGD-Decay and SGD-constant to examine the robustness of KATE. Please run the code in [logistic_regression/KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
+In Figure 2 of our paper, we compare the performance of KATE with AdGrad, AdaGradNorm, SGD-Decay and SGD-constant to examine the robustness of KATE. Please run the code in [RobustKATE.py](logistic_regression/RobustKATE.py) to reproduce the plots of Figure 2.
 
 ![Robustness of KATE](image/robust_KATE.png)
 
