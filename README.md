@@ -39,5 +39,12 @@ In Figure 1 of our paper, we compare the performance of KATE on scaled and un-sc
 
 ![Scale Invariance](image/scale_invariance.png)
 
+## Robustness of KATE
+
+In Figure 2 of our paper, we compare the performance of KATE with AdGrad, AdaGradNorm, SGD-Decay and SGD-constant to examine the robustness of KATE. Please run the code in [logistic_regression/KATEscaleinvariance.py](logistic_regression/KATEscaleinvariance.py) to reproduce the plots of Figure 1.
+
+![Robustness of KATE](image/robust_KATE.png)
+
+
 ## Notebooks
 To reproduce the results of the paper, run the train notebook, then run corresponding plot notebook.
