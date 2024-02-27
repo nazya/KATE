@@ -17,20 +17,13 @@ In this repository we compare the performance of KATE with well-known algorithms
 
 <!--ts-->
    * [Installation](#installation)
-   * [Usage](#usage)
-      * [STDIN](#stdin)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-      * [Auto insert and update TOC](#auto-insert-and-update-toc)
-      * [GitHub token](#github-token)
-      * [TOC generation with Github Actions](#toc-generation-with-github-actions)
-   * [Tests](#tests)
-   * [Dependency](#dependency)
-   * [Docker](#docker)
-     * [Local](#local)
-     * [Public](#public)
+   * [Logistic Regression](#logistic-regression)
+      * [Scale Invariance](#scale-invariance)
+      * [Robustness of KATE](#robustness-KATE)
+      * [Performance of KATE on Real Data](#KATE-real-data)
+   * [Training of Neural Network](#neural-network)
+     * [Image Classification](#image-classification)
+     * [Text Classification](#text-classification)
 <!--te-->
 
 
