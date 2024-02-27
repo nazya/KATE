@@ -47,7 +47,7 @@ In Figure 2 of our paper, we compare the performance of KATE with AdGrad, AdaGra
 
 ## Performance of KATE on Real Data
 
-In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGradNorm, SGD-Decay and SGD-constant on real data. Please run the code in [RobustKATE.py](logistic_regression/RobustKATE.py),  and to reproduce the performance of KATE on heart, australian and splice dataset, respectively.
+In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGradNorm, SGD-Decay and SGD-constant on real data. Please run the code in [KATEheart.py](logistic_regression/KATEheart.py), [KATEaustralian.py](logistic_regression/KATEaustralian.py) and [KATEsplice.py](logistic_regression/KATEsplice.py) to reproduce the performance of KATE on heart, australian and splice dataset, respectively.
 
 ![KATE on real data](image/KATE_realdata.png)
 
