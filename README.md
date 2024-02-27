@@ -27,6 +27,7 @@ In this repository we compare the performance of KATE with well-known algorithms
 <!--te-->
 
 ## Requirements
+The anaconda environment can be easily created by the following command:
 ```setup
 conda env create -f environment.yml
 ```
