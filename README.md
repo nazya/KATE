@@ -55,7 +55,7 @@ In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGra
 
 ## Training of Neural Network
 
-In Figure 4 of our paper, we compare the performance of KATE with AdGrad, ADAM on two tasks. 
+In Figure 4 of our paper, we compare the performance of KATE with AdGrad and ADAM on two tasks. 
 
 - **Image Classification**: For training ResNet18 in CIFAR10 dataset.
 
