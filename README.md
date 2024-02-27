@@ -16,7 +16,7 @@ In this repository we compare the performance of KATE with well-known algorithms
 ## Table of Contents
 
 <!--ts-->
-   * [Installation](#installation)
+   * [Requirements](#requirements)
    * [Logistic Regression](#logistic-regression)
       * [Scale Invariance](#scale-invariance)
       * [Robustness of KATE](#robustness-KATE)
