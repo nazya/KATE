@@ -13,6 +13,8 @@ In this repository we compare the performance of KATE with well-known algorithms
 
 ```
 
+## Table of Contents
+
 ## Requirements
 ```setup
 conda env create -f environment.yml
