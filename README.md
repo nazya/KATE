@@ -21,7 +21,7 @@ In this repository we compare the performance of KATE with well-known algorithms
       * [Scale Invariance](#scale-invariance)
       * [Robustness of KATE](#robustness-of-KATE)
       * [Performance of KATE on Real Data](#performance-of-KATE-on-real-data)
-   * [Training of Neural Network](#neural-network)
+   * [Training of Neural Network](#training-of-neural-network)
      * [Image Classification](#image-classification)
      * [Text Classification](#text-classification)
 <!--te-->
@@ -53,5 +53,5 @@ In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGra
 
 
 
-## Notebooks
+## Training of Neural Network
 To reproduce the results of the paper, run the train notebook, then run corresponding plot notebook.
