@@ -14,8 +14,6 @@ In this repository we compare the performance of KATE with well-known algorithms
 ```
 
 ## Table of Contents
-
-Table of contents
 =================
 
 <!--ts-->
