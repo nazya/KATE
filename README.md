@@ -57,9 +57,9 @@ In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGra
 
 In Figure 4 of our paper, we compare the performance of KATE with AdGrad, ADAM on two tasks. 
 
-- Image Classification: For training ResNet18 in CIFAR10 dataset.
+- **Image Classification**: For training ResNet18 in CIFAR10 dataset.
 
-- Text Classification: BERT fine-tuning on the emotions dataset from the Hugging Face Hub.
+- **Text Classification**: BERT fine-tuning on the emotions dataset from the Hugging Face Hub.
 
 Please run the code in [train.ipynb](train.ipynb) to reproduce the plots for these two tasks.
 
