@@ -54,4 +54,11 @@ In Figure 3 of our paper, we compare the performance of KATE with AdGrad, AdaGra
 
 
 ## Training of Neural Network
-To reproduce the results of the paper, run the train notebook, then run corresponding plot notebook.
+
+In Figure 4 of our paper, we compare the performance of KATE with AdGrad, ADAM on two tasks. 
+- For training ResNet18 in CIFAR10 dataset
+- BERT fine-tuning on the emotions dataset from the Hugging Face Hub.
+
+Please run the code in [train.ipynb](train.ipynb) to reproduce the plots for these two tasks.
+
+![KATE on Neural Net](image/neural_net.png)
