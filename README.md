@@ -1,4 +1,9 @@
-# Code for: Remove that Square Root: a New Efficient Scale-Invariant Version of AdaGrad
+# Remove that Square Root: a New Efficient Scale-Invariant Version of AdaGrad
+
+This repository documents the code to reproduce the experiments in the paper:
+> Remove that Square Root: a New Efficient Scale-Invariant Version of AdaGrad
+
+
 
 ## Requirements
 ```setup
