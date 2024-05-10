@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 
 import pandas as pd
 
@@ -35,12 +36,84 @@ class Dataset(DictEnum):
     CIFAR10 = auto()
     
 
+
+class Cutout(object):
+    """Randomly mask out one or more patches from an image.
+
+    Args:
+        n_holes (int): Number of patches to cut out of each image.
+        length (int): The length (in pixels) of each square patch.
+    """
+    def __init__(self, n_holes, length):
+        self.n_holes = n_holes
+        self.length = length
+
+    def __call__(self, img):
+        """
+        Args:
+            img (Tensor): Tensor image of size (C, H, W).
+        Returns:
+            Tensor: Image with n_holes of dimension length x length cut out of it.
+        """
+        h = img.size(1)
+        w = img.size(2)
+
+        mask = np.ones((h, w), np.float32)
+
+        for n in range(self.n_holes):
+            y = np.random.randint(h)
+            x = np.random.randint(w)
+
+            y1 = np.clip(y - self.length // 2, 0, h)
+            y2 = np.clip(y + self.length // 2, 0, h)
+            x1 = np.clip(x - self.length // 2, 0, w)
+            x2 = np.clip(x + self.length // 2, 0, w)
+
+            mask[y1: y2, x1: x2] = 0.
+
+        mask = torch.from_numpy(mask)
+        mask = mask.expand_as(img)
+        img = img * mask
+
+        return img
+
 def CIFAR10(cfg, train):
+    normalize = transforms.Normalize(mean=[x / 255.0 for x in [125.3, 123.0, 113.9]],
+                                     std=[x / 255.0 for x in [63.0, 62.1, 66.7]])
+
+    train_transform = transforms.Compose([])
+    
+    data_augmentation = True
+    if data_augmentation:
+        train_transform.transforms.append(transforms.RandomCrop(32, padding=4))
+        train_transform.transforms.append(transforms.RandomHorizontalFlip())
+    train_transform.transforms.append(transforms.ToTensor())
+    train_transform.transforms.append(normalize)
+    
+    cutout = True
+    nholes = 1
+    length = 16
+    if cutout:
+        train_transform.transforms.append(Cutout(n_holes=nholes, length=length))
+
+
+    test_transform = transforms.Compose([
+        transforms.ToTensor(),
+        normalize])
+
+    
     root = '/tmp'
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                     std=[0.229, 0.224, 0.225])
-    transform = transforms.Compose([transforms.ToTensor(), normalize])
-    dataset = datasets.CIFAR10(root, train=train, transform=transform, download=True)
+    num_classes = 10
+    train_dataset = datasets.CIFAR10(root=root,
+                                     train=True,
+                                     transform=train_transform,
+                                     download=True)
+
+    test_dataset = datasets.CIFAR10(root=root,
+                                    train=False,
+                                    transform=test_transform,
+                                    download=True)
+
     if train is False:
 #         nclasses = 10
 #         mdnsamples = 400
@@ -53,9 +126,33 @@ def CIFAR10(cfg, train):
 #             test_inds += indices[mdnsamples:]
 
 #         return Subset(dataset, test_inds), Subset(dataset, val_inds)
-        return dataset, None
+        return test_dataset, None
     
-    return dataset, (None, 10)
+    return train_dataset, (None, num_classes)
+    
+    
+
+# def CIFAR10(cfg, train):
+#     root = '/tmp'
+#     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+#                                      std=[0.229, 0.224, 0.225])
+#     transform = transforms.Compose([transforms.ToTensor(), normalize])
+#     dataset = datasets.CIFAR10(root, train=train, transform=transform, download=True)
+#     if train is False:
+# #         nclasses = 10
+# #         mdnsamples = 400
+# #         val_inds, test_inds = list(), list()
+# #         for i in range(nclasses):
+# #             indices = [j for j, x in enumerate(dataset.targets) if x == i]
+# #             random.shuffle(indices)
+
+# #             val_inds += indices[:mdnsamples]
+# #             test_inds += indices[mdnsamples:]
+
+# #         return Subset(dataset, test_inds), Subset(dataset, val_inds)
+#         return dataset, None
+    
+#     return dataset, (None, 10)
 
 
 class Singleton(type):
