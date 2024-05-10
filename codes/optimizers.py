@@ -10,11 +10,13 @@ class Optimizer(DictEnum):
 class ADAM(torch.optim.Optimizer):
     def __init__(self, params, cfg, device):  # lr=1e-3, betas=(0.9, 0.999), eps=1e-8, weight_decay=0):
         defaults = dict(device=device, lr=cfg.lr,
-                        betas=(cfg.beta1_, cfg.beta2_), eps=cfg.eps)  # , weight_decay=weight_decay)
+                        betas=(cfg.beta1_, cfg.beta2_), eps=cfg.eps, weight_decay=cfg.weight_decay)
         super().__init__(params, defaults)
+
 
     def step(self):
         loss = None
+
         for group in self.param_groups:
 
             for p in group['params']:
@@ -35,9 +37,9 @@ class ADAM(torch.optim.Optimizer):
                 beta1, beta2 = group['betas']
                 state['step'] += 1
 
-                # # Add weight decay if any
-                # if group['weight_decay'] != 0:
-                #     grad = grad.add(group['weight_decay'], p.data)
+                # Add weight decay if any
+                if group['weight_decay'] != 0:
+                    grad = grad + group['weight_decay']*p.data
 
                 # Momentum
                 m = torch.mul(m, beta1) + (1 - beta1)*grad
@@ -49,8 +51,9 @@ class ADAM(torch.optim.Optimizer):
                 vhat = v / (1 - beta2 ** state['step'])
 
                 denom = torch.sqrt(vhat) + group['eps']
-
-                p.data = p.data - group['lr'] * mhat / denom
+                
+                lr = group['lr']
+                p.data = p.data - lr * mhat / denom
 
                 # Save state
                 state['m'], state['v'] = m, v
@@ -62,7 +65,7 @@ class ADAM(torch.optim.Optimizer):
 
 class KATE(torch.optim.Optimizer): # delta 0 or 1e-8
     def __init__(self, params, cfg, device):  # lr=1e-3, eta=0.9, eps=1e-8, delta=0, weight_decay=0):
-        defaults = dict(device=device, lr=cfg.lr, eta=cfg.eta_, eps=cfg.eps)  # , eps=eps, weight_decay=weight_decay)
+        defaults = dict(device=device, lr=cfg.lr, eta=cfg.eta_, eps=cfg.eps, weight_decay=cfg.weight_decay)
         super().__init__(params, defaults)
         
 
@@ -82,9 +85,10 @@ class KATE(torch.optim.Optimizer): # delta 0 or 1e-8
 
                 m, b = state['m'], state['b']
                 eta = group['eta']
-                
-                # if group['weight_decay'] != 0:
-                #     grad = grad.add(group['weight_decay'], p.data)
+
+                if group['weight_decay'] != 0:
+                    grad = grad + group['weight_decay']*p.data
+
 
                 g = grad*grad
 
@@ -92,7 +96,9 @@ class KATE(torch.optim.Optimizer): # delta 0 or 1e-8
                 denom = b + group['eps']
                 m = m + torch.mul(eta, g) + g / denom
 
-                p.data = p.data - group['lr'] * torch.sqrt(m) * grad / denom
+                lr = group['lr']
+
+                p.data = p.data - lr * torch.sqrt(m) * grad / denom
 
                 # Save state
                 state['m'], state['b'] = m, b

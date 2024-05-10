@@ -89,6 +89,15 @@ def train(cfg):
     # log_ticks = np.linspace(0, cfg.nepochs, nticks, endpoint=True).round().astype(int)
     log_ticks = linspace(1, cfg.nepochs, nticks, endpoint=True).round().astype(int)
     steps = 0
+    
+    scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[60, 120, 160], gamma=cfg.decay)
+    # scheduler_kwargs = {'milestones'=[60, 120, 160],
+    #                     'gamma'=0.2,
+    #                     'T_max'=cfg.nepochs}
+    # scheduler_kwargs = {'T_max': cfg.nepochs}
+    # scheduler = getattr(torch.optim.lr_scheduler, cfg.scheduler['name'])
+    # scheduler = scheduler(optimizer, **scheduler_kwargs)
+    
     for e in range(1, cfg.nepochs+1):
         model.train()
         running_loss, correct, samples_per_epoch = 0, 0, 0
@@ -113,7 +122,8 @@ def train(cfg):
             loss.backward()
             optimizer.step()
             steps += 1
-
+        
+        # scheduler.step()
         if logger.enabled and e in log_ticks:
             m.update(metrics(model, train_loader, 'train', criterion, device, classes))
             m.update(metrics(model, test_loader, 'test', criterion, device, classes))

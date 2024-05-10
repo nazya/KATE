@@ -6,3 +6,11 @@ from enum import auto
 
 class Loss(DictEnum):
     CrossEntropyLoss = auto()
+
+
+class Scheduler(DictEnum):
+    MultiStepLR = auto()
+    CosineAnnealingLR = auto()
+    ConstantLR = auto()
+    LinearLR = auto()
+    # = auto()
