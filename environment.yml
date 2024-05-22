@@ -365,4 +365,4 @@ dependencies:
   - zstd=1.5.5=hc292b87_0
   - pip:
       - fsspec==2023.12.2
-prefix: /home/nazya/miniconda3
+prefix: /home/miniconda3
