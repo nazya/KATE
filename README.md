@@ -3,11 +3,11 @@
 This repository documents the code to reproduce the experiments reported in the paper:
 > [Remove that Square Root: A New Efficient Scale-Invariant Version of AdaGrad](https://arxiv.org/pdf/2403.02648.pdf)
 
-In this work, we introduce a novel optimization algorithm called KATE, a scale invariant adaptation of AdaGrad. Here we provide a screenshot of KATE's pseudocode from the paper.
+In this work, we introduce a novel optimization algorithm called KATE, a scale-invariant adaptation of AdaGrad. We provide a screenshot of KATE's pseudocode from the paper.
 
 ![KATE pseudocode](image/KATE_pseudocode.png)
 
-In this repository we compare the performance of KATE with well-known algorithms like AdaGrad anbd ADAM on logistic regression, image classification and text classification problems. If you use this code for your research, please cite the paper as follow
+In this repository, we compare the performance of KATE with well-known algorithms like AdaGrad and ADAM on logistic regression, image classification and text classification problems. If you use this code for your research, please cite the paper as follows
 
 ```
 @article{choudhury2024remove,
